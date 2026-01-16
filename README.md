@@ -39,8 +39,8 @@ employee_api/
 │ │ ├── config.py
 │ │ └── security.py
 │ │
-│ ├── database/ # Database setup
-│ │ └── session.py
+│ ├── database.py # Database setup
+│ │ 
 │ │
 │ ├── models/ # SQLAlchemy models
 │ │ └── employee.py

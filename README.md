@@ -1,46 +1,47 @@
 # Employee Management API (FastAPI)
 
-A secure, well-structured **Employee Management REST API** built using **FastAPI**, featuring **JWT-based authentication**, **CRUD operations**, and **pytest-based test coverage**.
+A secure and well-structured Employee Management REST API built using FastAPI.
+The application supports JWT-based authentication, full CRUD operations for employees,
+and automated test coverage using pytest.
 
-This project was developed as part of a backend hiring assignment and follows industry-standard best practices.
-
----
-
-## 🚀 Features
-
-* 🔐 JWT Authentication (Token-based)
-* 👤 Employee CRUD APIs
-* ✏️ Partial updates using PATCH
-* 🧪 Automated testing with pytest
-* 📄 Interactive API docs (Swagger & ReDoc)
-* ⚙️ Environment-based configuration
+This project was developed as part of a backend hiring assignment and follows
+industry-standard best practices.
 
 ---
 
-## 🛠 Tech Stack
+## Features
 
-* **Framework:** FastAPI
-* **Language:** Python 3.10+
-* **ORM:** SQLAlchemy
-* **Database:** SQLite (easily switchable)
-* **Auth:** OAuth2 + JWT
-* **Validation:** Pydantic
-* **Testing:** Pytest
+- JWT-based authentication
+- Employee CRUD APIs
+- Partial updates using PATCH
+- Automated testing with pytest
+- Interactive API documentation using Swagger and ReDoc
+- Environment-based configuration
 
 ---
 
-## 📂 Project Structure
+## Tech Stack
 
-```
+- Framework: FastAPI
+- Language: Python 3.10+
+- ORM: SQLAlchemy
+- Database: SQLite (easily switchable)
+- Authentication: OAuth2 with JWT
+- Validation: Pydantic
+- Testing: Pytest
+
+---
+
+## Project Structure
+
 employee_api/
 │
 ├── app/
-│ ├── core/ # App configuration & security
+│ ├── core/ # Application configuration and security
 │ │ ├── config.py
 │ │ └── security.py
 │ │
 │ ├── database.py # Database setup
-│ │ 
 │ │
 │ ├── models/ # SQLAlchemy models
 │ │ └── employee.py
@@ -56,122 +57,107 @@ employee_api/
 │ │ ├── test_auth.py
 │ │ └── test_employees.py
 │ │
-│ └── main.py # FastAPI app entry point
+│ └── main.py # FastAPI application entry point
 │
 ├── Dockerfile
 ├── requirements.txt
-└── README.md
-├── employees.db
+├── README.md
+└── employees.db
 
-```
+yaml
+Copy code
 
 ---
 
-## 🔑 Authentication Flow
+## Authentication Flow
 
 1. User logs in via `/api/auth/token`
 2. API returns a JWT access token
 3. Token is passed in the `Authorization` header
 4. Protected routes validate the token
 
-```
 Authorization: Bearer <access_token>
-```
+
+yaml
+Copy code
 
 ---
 
-## 📌 API Endpoints
+## API Endpoints
 
-### Auth
+### Authentication
 
-| Method | Endpoint          | Description       |
-| ------ | ----------------- | ----------------- |
-| POST   | `/api/auth/token` | Login & get token |
+| Method | Endpoint          | Description            |
+|-------|-------------------|------------------------|
+| POST  | `/api/auth/token` | Login and get JWT token |
 
 ### Employees
 
-| Method | Endpoint              | Description     |
-| ------ | --------------------- | --------------- |
-| POST   | `/api/employees/`     | Create employee |
-| GET    | `/api/employees/`     | List employees  |
-| GET    | `/api/employees/{id}` | Get employee    |
-| PATCH  | `/api/employees/{id}` | Partial update  |
-| PUT    | `/api/employees/{id}` | Full update     |
-| DELETE | `/api/employees/{id}` | Delete employee |
+| Method | Endpoint              | Description        |
+|-------|-----------------------|--------------------|
+| POST  | `/api/employees/`     | Create employee    |
+| GET   | `/api/employees/`     | List employees     |
+| GET   | `/api/employees/{id}` | Get employee by ID |
+| PATCH | `/api/employees/{id}` | Partial update     |
+| PUT   | `/api/employees/{id}` | Full update        |
+| DELETE| `/api/employees/{id}` | Delete employee    |
 
 ---
 
-## ▶️ Running the Project
+## Running the Project
 
-### 1️⃣ Create virtual environment
+### 1. Create a virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-
-### 2️⃣ Install dependencies
-
-```bash
+source venv/bin/activate
+# Windows: venv\Scripts\activate
+2. Install dependencies
+bash
+Copy code
 pip install -r requirements.txt
-```
-
-### 3️⃣ Run the server
-
-```bash
+3. Run the server
+bash
+Copy code
 uvicorn app.main:app --reload
-```
+Swagger UI will be available at:
 
-Access Swagger UI:
-
-```
+arduino
+Copy code
 http://127.0.0.1:8000/docs
-```
-
----
-
-## 🧪 Running Tests
-
-```bash
+Running Tests
+bash
+Copy code
 pytest
-```
+All tests pass successfully.
 
-✔ All tests pass successfully
+Design Decisions
+FastAPI chosen for high performance and automatic documentation
 
----
+JWT used for stateless and secure authentication
 
-## 🧠 Design Decisions
+PATCH and PUT used correctly for partial and full updates
 
-* **FastAPI** chosen for async performance & automatic docs
-* **JWT** for stateless authentication
-* **PATCH vs PUT** used correctly for partial vs full updates
-* **Pytest** ensures reliability & prevents regressions
+Pytest ensures reliability and prevents regressions
 
----
+Test Coverage
+Authentication success and failure cases
 
-## ✅ Test Coverage
+Employee creation
 
-* Authentication success & failure
-* Employee creation
-* Duplicate email validation
-* Not-found scenarios
-* Authorized access validation
+Duplicate email validation
 
----
+Not-found scenarios
 
-## 📌 Notes
+Authorized access validation
 
-* SQLite used for simplicity
-* Easily extendable to PostgreSQL/MySQL
-* Environment variables managed via `.env`
+Notes
+SQLite is used for simplicity and demonstration purposes
 
----
+The project can be easily extended to PostgreSQL or MySQL
 
-## 👤 Author
+Environment variables are managed using a .env file
 
-**Jupally Rakesh**
+Author
+Jupally Rakesh
 Backend Developer | Python | FastAPI
-
----
-
-

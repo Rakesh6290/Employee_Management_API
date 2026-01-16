@@ -22,50 +22,51 @@ industry-standard best practices.
 
 ## Tech Stack
 
-- Framework: FastAPI
-- Language: Python 3.10+
-- ORM: SQLAlchemy
-- Database: SQLite (easily switchable)
-- Authentication: OAuth2 with JWT
-- Validation: Pydantic
-- Testing: Pytest
+- **Framework:** FastAPI
+- **Language:** Python 3.10+
+- **ORM:** SQLAlchemy
+- **Database:** SQLite (easily switchable)
+- **Authentication**: OAuth2 with JWT
+- **Validation:** Pydantic
+- **Testing:** Pytest
 
 ---
 
-## Project Structure
+---
 
+## 📂 Project Structure
+
+```
 employee_api/
 │
 ├── app/
-│ ├── core/ # Application configuration and security
-│ │ ├── config.py
-│ │ └── security.py
-│ │
-│ ├── database.py # Database setup
-│ │
-│ ├── models/ # SQLAlchemy models
-│ │ └── employee.py
-│ │
-│ ├── routes/ # API routes
-│ │ ├── auth.py
-│ │ └── employees.py
-│ │
-│ ├── schemas/ # Pydantic schemas
-│ │ └── employee.py
-│ │
-│ ├── tests/ # Pytest test cases
-│ │ ├── test_auth.py
-│ │ └── test_employees.py
-│ │
-│ └── main.py # FastAPI application entry point
+│   ├── core/           # App configuration & security
+│   │   ├── config.py
+│   │   └── security.py
+│   │
+│   ├── database/       # Database setup
+│   │   └── session.py
+│   │
+│   ├── models/         # SQLAlchemy models
+│   │   └── employee.py
+│   │
+│   ├── routes/         # API routes
+│   │   ├── auth.py
+│   │   └── employees.py
+│   │
+│   ├── schemas/        # Pydantic schemas
+│   │   └── employee.py
+│   │
+│   ├── tests/          # Pytest test cases
+│   │   ├── test_auth.py
+│   │   └── test_employees.py
+│   │
+│   └── main.py         # FastAPI app entry point
 │
-├── Dockerfile
+├── .env
 ├── requirements.txt
-├── README.md
-└── employees.db
-
-yaml
-Copy code
+└── README.md
+```
 
 ---
 
@@ -76,88 +77,104 @@ Copy code
 3. Token is passed in the `Authorization` header
 4. Protected routes validate the token
 
+```
 Authorization: Bearer <access_token>
-
-yaml
-Copy code
+```
 
 ---
 
 ## API Endpoints
 
-### Authentication
+### Auth
 
-| Method | Endpoint          | Description            |
-|-------|-------------------|------------------------|
-| POST  | `/api/auth/token` | Login and get JWT token |
+| Method | Endpoint          | Description       |
+| ------ | ----------------- | ----------------- |
+| POST   | `/api/auth/token` | Login & get token |
 
 ### Employees
 
-| Method | Endpoint              | Description        |
-|-------|-----------------------|--------------------|
-| POST  | `/api/employees/`     | Create employee    |
-| GET   | `/api/employees/`     | List employees     |
-| GET   | `/api/employees/{id}` | Get employee by ID |
-| PATCH | `/api/employees/{id}` | Partial update     |
-| PUT   | `/api/employees/{id}` | Full update        |
-| DELETE| `/api/employees/{id}` | Delete employee    |
+| Method | Endpoint              | Description     |
+| ------ | --------------------- | --------------- |
+| POST   | `/api/employees/`     | Create employee |
+| GET    | `/api/employees/`     | List employees  |
+| GET    | `/api/employees/{id}` | Get employee    |
+| PATCH  | `/api/employees/{id}` | Partial update  |
+| PUT    | `/api/employees/{id}` | Full update     |
+| DELETE | `/api/employees/{id}` | Delete employee |
 
 ---
 
-## Running the Project
+##  Running the Project
 
-### 1. Create a virtual environment
+### 1 Create virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate
-# Windows: venv\Scripts\activate
-2. Install dependencies
-bash
-Copy code
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+
+### 2️ Install dependencies
+
+```bash
 pip install -r requirements.txt
-3. Run the server
-bash
-Copy code
+```
+
+### 3️ Run the server
+
+```bash
 uvicorn app.main:app --reload
-Swagger UI will be available at:
+```
 
-arduino
-Copy code
+Access Swagger UI:
+
+```
 http://127.0.0.1:8000/docs
-Running Tests
-bash
-Copy code
+```
+
+---
+
+## Running Tests
+
+```bash
 pytest
-All tests pass successfully.
+```
 
-Design Decisions
-FastAPI chosen for high performance and automatic documentation
+✔ All tests pass successfully
 
-JWT used for stateless and secure authentication
+---
 
-PATCH and PUT used correctly for partial and full updates
+## Design Decisions
 
-Pytest ensures reliability and prevents regressions
+* **FastAPI** chosen for async performance & automatic docs
+* **JWT** for stateless authentication
+* **PATCH vs PUT** used correctly for partial vs full updates
+* **Pytest** ensures reliability & prevents regressions
 
-Test Coverage
-Authentication success and failure cases
+---
 
-Employee creation
+## Test Coverage
 
-Duplicate email validation
+* Authentication success & failure
+* Employee creation
+* Duplicate email validation
+* Not-found scenarios
+* Authorized access validation
 
-Not-found scenarios
+---
 
-Authorized access validation
+## Notes
 
-Notes
-SQLite is used for simplicity and demonstration purposes
+* SQLite used for simplicity
+* Easily extendable to PostgreSQL/MySQL
+* Environment variables managed via `.env`
 
-The project can be easily extended to PostgreSQL or MySQL
+---
 
-Environment variables are managed using a .env file
+## 👤 Author
 
-Author
-Jupally Rakesh
+**Jupally Rakesh**
 Backend Developer | Python | FastAPI
+
+---
+
+

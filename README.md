@@ -35,32 +35,34 @@ This project was developed as part of a backend hiring assignment and follows in
 employee_api/
 │
 ├── app/
-│   ├── core/           # App configuration & security
-│   │   ├── config.py
-│   │   └── security.py
-│   │
-│   ├── database/       # Database setup
-│   │   └── session.py
-│   │
-│   ├── models/         # SQLAlchemy models
-│   │   └── employee.py
-│   │
-│   ├── routes/         # API routes
-│   │   ├── auth.py
-│   │   └── employees.py
-│   │
-│   ├── schemas/        # Pydantic schemas
-│   │   └── employee.py
-│   │
-│   ├── tests/          # Pytest test cases
-│   │   ├── test_auth.py
-│   │   └── test_employees.py
-│   │
-│   └── main.py         # FastAPI app entry point
+│ ├── core/ # App configuration & security
+│ │ ├── config.py
+│ │ └── security.py
+│ │
+│ ├── database/ # Database setup
+│ │ └── session.py
+│ │
+│ ├── models/ # SQLAlchemy models
+│ │ └── employee.py
+│ │
+│ ├── routes/ # API routes
+│ │ ├── auth.py
+│ │ └── employees.py
+│ │
+│ ├── schemas/ # Pydantic schemas
+│ │ └── employee.py
+│ │
+│ ├── tests/ # Pytest test cases
+│ │ ├── test_auth.py
+│ │ └── test_employees.py
+│ │
+│ └── main.py # FastAPI app entry point
 │
-├── .env
+├── Dockerfile
 ├── requirements.txt
 └── README.md
+├── employees.db
+
 ```
 
 ---
